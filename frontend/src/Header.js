@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter, Link} from 'react-router-dom';
 import { text } from './static/text';
 import Item from './Components/items/item';
 import SearchIcon from '@material-ui/icons/Search';
@@ -25,24 +26,36 @@ const header = () => {
                     <div className="collapse navbar-collapse d-flex justify-content-end right-content" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#"><SearchIcon className="icon"/></a>
+                                <a className="nav-link" href="#"><SearchIcon className="icon"/></a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#"><PersonIcon className="icon"/></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#"><ShoppingCartIcon className="icon"/></a>
-                            </li>
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
+                            <li className="nav-item c-dropdown__item">
+                                <span className="nav-link c-dropdown__item-title" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <ShoppingCartIcon className="icon"/>
+                                </span>
+                                <ul className="c-dropdown__submenu dots shadow-sm" aria-labelledby="navbarDropdownMenuLink">
+                                    <div className="myDropDown">
+                                        <li className="c-dropdown__submenu-item">
+                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Action</a>
+                                        </li>
+                                        <li className="c-dropdown__submenu-item">
+                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Another action</a>
+                                        </li>
+                                        <li className="c-dropdown__submenu-item">
+                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Something else here</a>
+                                        </li>
+                                    </div>
+                                    
+                                    <li className="final-price d-flex align-items-center justify-content-center">
+                                        <span>Total do pedido: <b>R$</b> {/*{price}*/} </span>
+                                    </li>
+                                    <li className="finish d-flex align-items-center justify-content-center">
+                                        <span className="fw-bold text-white">FINALIZAR COMPRA</span>
+                                    </li>
                                 </ul>
-                            </li> */}
+                            </li>
                         </ul>
                     </div>
                 </div>

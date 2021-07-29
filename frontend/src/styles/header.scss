@@ -5,6 +5,53 @@
 .navbar {
     height: 75px;
 
+    .myDropDown {
+        height: 342px;
+
+        overflow-y: auto;
+    }
+
+    .c-dropdown__item {
+        position: relative;
+
+        .c-dropdown__submenu {
+            background-color: #eeeeee;
+
+            margin: 0;
+
+            width: 321px;
+    
+            position: absolute;
+
+            transform: translate(-291px, 18px);  
+            
+            .final-price {
+                background-color: #e5e5e5;
+
+                width: 321px;
+                height: 57.5px;
+
+                transform: translateX(-32px);
+            }
+
+            .finish {
+                background-color: #00bb16;
+
+                width: 321px;
+                height: 57.5px;
+
+                transform: translateX(-32px);
+            }
+
+            &-item {
+                &:not(:last-child) {
+                    margin-bottom: 10rem;
+                }
+            }
+        }
+
+    }
+
     .dots {
         list-style-type: none;
     }
@@ -21,8 +68,20 @@
 
     .icon {
         margin-right: 55px;
+
+        height: 23px;
+
+        color: black;
+    }
+
+}
+
+@media (max-width: 661px) {
+    .links {
+        
     }
 }
+
 
 
 

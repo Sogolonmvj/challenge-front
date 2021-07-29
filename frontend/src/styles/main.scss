@@ -1,6 +1,7 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import './header.scss';
 @import './item.scss';
+@import './c-dropdown.scss';
 
 :root {
     min-height: 100vh;
@@ -8,4 +9,21 @@
 
 .main {
     font-family: Montserrat;
+    font-size: 16px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #dcdcdc; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #707070; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #858585; 
 }
