@@ -2,6 +2,8 @@ import React from 'react';
 
 const Card = (props) => {
 
+    if (!props) return null;
+
     const inventory = props.available === true ? props.price : 'Esgotado!';
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
-import { text } from './static/text';
+import text from './static/text';
 import Item from './Components/items/item';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/Person';
@@ -25,21 +25,45 @@ const header = () => {
     return (
         <>
             <BrowserRouter>
-                <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <nav className="navbar navbar-expand-xl navbar-light bg-white shadow-sm">
                     <div className="container-fluid">
                         <div className="d-flex">
                             <Link className="navbar-brand m-0" to="/">
                                 <img src='agencia-eplus-n-logo.png' style={{width: 259 + 'px' }} alt="eplus-logo" className="logo" />
                             </Link>
                             <ul className="d-flex flex-horizontal dots links">
-                                {text.map(text => (
-                                    <Item text={text.text}/>
-                                ))}
+                                <li><Item text={ text[0] }/></li>
+                                <li><Item text={ text[1] }/></li>
+                                <li><Item text={ text[2] }/></li>
+                                <li><Item text={ text[3] }/></li>
+                                <li><Item text={ text[4] }/></li>
                             </ul>
                         </div>
 
                         <div className="collapse navbar-collapse d-flex justify-content-end right-content" id="navbarNavDropdown">
                             <ul className="navbar-nav">
+                                <li className="nav-item c-dropdown_item responsive">
+                                    <span className="nav-link c-dropdown_item-title">Ver Mais</span>
+                                    <ul className="c-dropdown_submenu dots shadow-sm" aria-labelledby="navbarDropdownMenuLink">
+                                        <div className="myDropDown">
+                                            <li className="c-dropdown_submenu-item">
+                                                <Item text={ text[0] }/>
+                                            </li>
+                                            <li className="c-dropdown_submenu-item">
+                                                <Item text={ text[1] }/>
+                                            </li>
+                                            <li className="c-dropdown_submenu-item">
+                                                <Item text={ text[2] }/>
+                                            </li>
+                                            <li className="c-dropdown_submenu-item">
+                                                <Item text={ text[3] }/>
+                                            </li>
+                                            <li className="c-dropdown_submenu-item">
+                                                <Item text={ text[4] }/>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/"><SearchIcon className="icon"/></Link>
                                 </li>

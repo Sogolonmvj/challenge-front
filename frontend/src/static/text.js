@@ -1,4 +1,4 @@
-export const text = [
+const text = [
     {
         text: 'Lorem ipsum'
     },
@@ -15,3 +15,5 @@ export const text = [
         text: 'Lorem ipsum'
     },
 ];
+
+export default text;
