@@ -1,0 +1,35 @@
+.card {
+    background-color: #f0f0f0;
+
+    border-left: none;
+    border-top: none;
+    border-right: none;
+
+    .card-body {
+
+        .color {
+            color: #00bb16;
+        }
+        .size {
+            font-size: 13px;
+        }
+        .price-margin {
+            margin-left: 20px;
+        }
+        .distance {
+            margin: 5px 0 7px 13px;
+        }
+        .resize {
+            overflow: hidden;
+
+            line-height: 1em;
+            max-height: 2em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+
+        }
+
+    }
+
+}

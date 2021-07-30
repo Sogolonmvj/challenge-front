@@ -5,61 +5,72 @@ import Item from './Components/items/item';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/Person';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Card from './Components/cards/card';
+import Products from '../src/static/products/products.json';
 
 const header = () => {
+    let sum = 0;
+
+    Products.cart.item.map(product => (
+        product.available ? sum += JSON.parse(product.bestPrice)*JSON.parse(product.quantity) : sum += 0
+    ));
+
+    let formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+    });
+
+    const total = formatter.format(sum);
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-                <div className="container-fluid">
-                    <div className="d-flex">
-                        <a className="navbar-brand m-0" href="#">
-                            <img src='agencia-eplus-n-logo.png' style={{width: 259 + 'px' }} alt="eplus-logo" className="logo" />
-                        </a>
-                        <ul className="d-flex flex-horizontal dots links">
-                            {text.map(text => (
-                                <Item text={text.text}/>
-                            ))}
-                        </ul>
-                    </div>
+            <BrowserRouter>
+                <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                    <div className="container-fluid">
+                        <div className="d-flex">
+                            <Link className="navbar-brand m-0" to="/">
+                                <img src='agencia-eplus-n-logo.png' style={{width: 259 + 'px' }} alt="eplus-logo" className="logo" />
+                            </Link>
+                            <ul className="d-flex flex-horizontal dots links">
+                                {text.map(text => (
+                                    <Item text={text.text}/>
+                                ))}
+                            </ul>
+                        </div>
 
-                    <div className="collapse navbar-collapse d-flex justify-content-end right-content" id="navbarNavDropdown">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#"><SearchIcon className="icon"/></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#"><PersonIcon className="icon"/></a>
-                            </li>
-                            <li className="nav-item c-dropdown__item">
-                                <span className="nav-link c-dropdown__item-title" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <ShoppingCartIcon className="icon"/>
-                                </span>
-                                <ul className="c-dropdown__submenu dots shadow-sm" aria-labelledby="navbarDropdownMenuLink">
-                                    <div className="myDropDown">
-                                        <li className="c-dropdown__submenu-item">
-                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Action</a>
+                        <div className="collapse navbar-collapse d-flex justify-content-end right-content" id="navbarNavDropdown">
+                            <ul className="navbar-nav">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/"><SearchIcon className="icon"/></Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/"><PersonIcon className="icon"/></Link>
+                                </li>
+                                <li className="nav-item c-dropdown__item">
+                                    <span className="nav-link c-dropdown__item-title" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <ShoppingCartIcon className="icon"/>
+                                    </span>
+                                    <ul className="c-dropdown__submenu dots shadow-sm" aria-labelledby="navbarDropdownMenuLink">
+                                        <div className="myDropDown">
+                                            {Products.cart.item.map(product => (
+                                                <li className="c-dropdown__submenu-item">
+                                                    <Card key={product.productID} available={product.available} channel={product.salesChannel} image={product.image} alt='product' product={product.name} quantity={product.quantity} price={product.bestPriceFormated} />
+                                                </li>
+                                            ))} 
+                                        </div>
+                                        <li className="final-price d-flex align-items-center justify-content-center">
+                                            <span>Total do pedido: <b>{total}</b></span>
                                         </li>
-                                        <li className="c-dropdown__submenu-item">
-                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Another action</a>
+                                        <li className="finish d-flex align-items-center justify-content-center">
+                                            <Link to="/" className="text-decoration-none"><span className="fw-bold text-white">FINALIZAR COMPRA</span></Link>
                                         </li>
-                                        <li className="c-dropdown__submenu-item">
-                                            <a className="c-dropdown__submenu-link text-decoration-none text-dark" href="#">Something else here</a>
-                                        </li>
-                                    </div>
-                                    
-                                    <li className="final-price d-flex align-items-center justify-content-center">
-                                        <span>Total do pedido: <b>R$</b> {/*{price}*/} </span>
-                                    </li>
-                                    <li className="finish d-flex align-items-center justify-content-center">
-                                        <span className="fw-bold text-white">FINALIZAR COMPRA</span>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </BrowserRouter>
         </>
     )
 };

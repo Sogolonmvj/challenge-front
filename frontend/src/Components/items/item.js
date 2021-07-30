@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Item = (props) => {
 
     return (
         <>
-            <li className="space"><a href="#" className="lorem">{props.text}</a></li>
+            <li className="space"><Link to="/" className="lorem">{props.text}</Link></li>
         </>
     )
 

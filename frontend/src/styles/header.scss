@@ -7,6 +7,9 @@
 
     .myDropDown {
         height: 342px;
+        width: 321px;
+
+        transform: translateX(-32px);
 
         overflow-y: auto;
     }
@@ -14,16 +17,34 @@
     .c-dropdown__item {
         position: relative;
 
+        &:hover {
+
+            .c-dropdown__submenu {
+                opacity: 1;
+
+                transform: translate(-291px, 18px) rotateX(0);
+
+                transition-timing-function: ease-out;
+            }
+            
+        }
+
         .c-dropdown__submenu {
             background-color: #eeeeee;
 
             margin: 0;
+            
+            opacity: 0.25;
 
             width: 321px;
     
             position: absolute;
 
-            transform: translate(-291px, 18px);  
+            transform: translate(-291px, 18px) rotateX(-90deg);  
+
+            transform-origin: top center;
+
+            transition: all 200ms ease-in;
             
             .final-price {
                 background-color: #e5e5e5;
@@ -43,11 +64,9 @@
                 transform: translateX(-32px);
             }
 
-            &-item {
-                &:not(:last-child) {
-                    margin-bottom: 10rem;
-                }
-            }
+            // &-item {
+            //     transform: translateX(-20px)
+            // }
         }
 
     }
@@ -78,7 +97,7 @@
 
 @media (max-width: 661px) {
     .links {
-        
+        color: fr;
     }
 }
 
