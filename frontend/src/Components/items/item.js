@@ -7,7 +7,7 @@ const Item = (props) => {
 
     return (
         <>
-            <li className="space"><Link to="/" className="lorem">{props.text.text}</Link></li>
+            <span className="space d-flex align-items-center"><Link to="/" className="lorem">{props.text.text}</Link></span>
         </>
     )
 

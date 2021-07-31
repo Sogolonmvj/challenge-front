@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import text from './static/text';
 import Item from './Components/items/item';
 import SearchIcon from '@material-ui/icons/Search';
@@ -15,12 +15,23 @@ const header = () => {
         product.available ? sum += JSON.parse(product.bestPrice)*JSON.parse(product.quantity) : sum += 0
     ));
 
+    let convert = String(sum);
+
+    let array = [];
+
+    for(let i in convert) array[i] = convert[i];
+
+    array.splice([array.length-2], 0, '.');
+
+    let converted = array.join('');
+
     let formatter = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL',
+        minimumFractionDigits: 2,
     });
 
-    const total = formatter.format(sum);
+    const total = formatter.format(converted);
 
     return (
         <>
@@ -77,8 +88,8 @@ const header = () => {
                                     <ul className="c-dropdown__submenu dots shadow-sm" aria-labelledby="navbarDropdownMenuLink">
                                         <div className="myDropDown">
                                             {Products.cart.item.map(product => (
-                                                <li className="c-dropdown__submenu-item">
-                                                    <Card key={product.productID} available={product.available} channel={product.salesChannel} image={product.image} alt='product' product={product.name} quantity={product.quantity} price={product.bestPriceFormated} />
+                                                <li key={product.productId} className="c-dropdown__submenu-item">
+                                                    <Card available={product.available} channel={product.salesChannel} image={product.image} alt='product' product={product.name} quantity={product.quantity} price={product.bestPriceFormated} />
                                                 </li>
                                             ))} 
                                         </div>
@@ -94,6 +105,10 @@ const header = () => {
                         </div>
                     </div>
                 </nav>
+                <Switch>
+                    <Route path="/component">{/*Any Component*/}</Route>
+                    <Route path="/anothercomponent">{/*Another Component*/}</Route>
+                </Switch>
             </BrowserRouter>
         </>
     )
